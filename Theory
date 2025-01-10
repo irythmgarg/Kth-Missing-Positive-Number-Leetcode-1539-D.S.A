@@ -1,0 +1,25 @@
+Question Statement
+You are given a sorted array nums containing distinct positive integers. The task is to find the kth missing positive integer from the sequence of natural numbers.
+
+Solution Explanation
+Problem Requirements:
+
+The difference between a number's value and its position in the array determines how many numbers are missing up to that point:
+nums[mid] - (mid + 1) gives the count of missing numbers before index mid.
+Use binary search to efficiently find the smallest index where the missing count matches or exceeds k.
+Approach:
+
+Use binary search to locate the point where the kth missing positive number lies:
+If the missing count at mid is greater than or equal to k, move to the left half.
+Otherwise, move to the right half.
+Returning the Result:
+
+After the loop, e represents the index where there are just fewer than k missing numbers.
+Use the formula e + k + 1 to compute the kth missing number, as the result lies after index e.
+Complexity Analysis
+Time Complexity:
+Binary Search: The search space is the length of the array, taking O(log(n)).
+Total: O(log(n)).
+Space Complexity:
+
+The space complexity is O(1) as no extra data structures are used.
