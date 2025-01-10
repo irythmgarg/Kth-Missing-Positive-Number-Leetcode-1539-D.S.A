@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int findKthPositive(vector<int>& nums, int k) {
+        // Initialize the binary search bounds
+        int s = 0;                        // Start of the search range
+        int e = nums.size() - 1;          // End of the search range
+
+        // Perform binary search
+        while (s <= e) {
+            int mid = (s + e) / 2;        // Calculate mid-point
+            
+            // Check how many numbers are missing before nums[mid]
+            if ((nums[mid] - (mid + 1)) >= k) {
+                e = mid - 1;              // Too many missing, search the left half
+            } else {
+                s = mid + 1;              // Not enough missing, search the right half
+            }
+        }
+
+        // Return the kth missing number
+        // 'e' points to the last position where there aren't enough missing numbers
+        return e + k + 1;
+    }
+};
